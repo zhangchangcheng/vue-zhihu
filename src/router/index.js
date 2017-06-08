@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+
+// 包含公用头部
+import Index from '../pages/Index.vue'
+import Home from '../pages/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+const routes = [
+  {
+    path: '/',
+    component: Index,
+    children: [
+      {
+        path: '',
+        component: Home
+      }
+    ]
+  }
+]
+
+const router = new Router({
+  mode: 'history',
+  routes
 })
+
+export default router
